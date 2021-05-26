@@ -8,5 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Release to S3
-      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name}} "folder/myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
+    - name: Push to S3 CI
+      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_CI}} "folder/myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Push to S3 QA
+      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_QA}} "folder/myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
