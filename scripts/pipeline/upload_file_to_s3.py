@@ -12,7 +12,7 @@ def main():
     aws_key=sys.argv[2]
     aws_access_key=sys.argv[3]
     aws_access_secret=sys.argv[4]
-    local_path=sys.argv[5]
+    # local_path=sys.argv[5]
 
     session = boto3.Session(
         aws_access_key_id=aws_access_key,
