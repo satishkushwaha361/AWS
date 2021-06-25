@@ -17,7 +17,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: Push to S3 CI
       if: startsWith(github.ref, 'refs/heads/')
-      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_Access_Key}}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_Access_Secret }}
+        AWS_REGION: us-east-1
+        run: bash scripts/pipeline/release.sh 
       #${{secrets.AWS_Bucket_Name_CI}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} scripts/hello_lambda.zip
 
   # test:
@@ -27,3 +31,10 @@ jobs:
   #   - name: Push to S3 QA
   #     if: startsWith(github.ref, 'refs/tags/')
   #     run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_QA}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
+
+      # - name: .NET Lambda build and deploy
+      # uses: evalytica/dotnet-lambda-actions/deploy@v0.1.0
+      # env:
+      #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #   AWS_REGION: us-east-1
