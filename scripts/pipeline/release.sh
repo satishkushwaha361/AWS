@@ -4,7 +4,7 @@
 export PATH="$PATH:/root/.dotnet/tools"
 # cd "${DOTNET_LAMBDA_WORKING_DIR:-.}"
 # dotnet lambda package $DOTNET_LAMBDA_PACKAGE_NAME
-aws s3 cp --only-show-errors $DOTNET_LAMBDA_PACKAGE_NAME s3://s3snslmbdademo/
+aws s3 cp --only-show-errors $DOTNET_LAMBDA_PACKAGE_NAME s3://s3snslmbdademo/hello_lambda.zip
 # aws lambda update-function-code \
 #   --region $AWS_REGION \
 #   --function-name $DOTNET_LAMBDA_FUNCTION_NAME \
