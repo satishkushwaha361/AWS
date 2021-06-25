@@ -17,12 +17,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: Push to S3 CI
       if: startsWith(github.ref, 'refs/heads/')
-      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_CI}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
+      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_CI}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "scripts/hello_lambda.zip"
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Push to S3 QA
-      if: startsWith(github.ref, 'refs/tags/')
-      run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_QA}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
+  #   - name: Push to S3 QA
+  #     if: startsWith(github.ref, 'refs/tags/')
+  #     run: bash scripts/pipeline/release.sh ${{secrets.AWS_Bucket_Name_QA}} "myapp.zip" ${{secrets.AWS_Access_Key}} ${{secrets.AWS_Access_Secret}} "myapp.zip"

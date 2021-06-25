@@ -14,22 +14,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+  
     - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+
+    - run: mkdir -p downloads
+
+    - run: echo hello satish > downloads/alpha.html
+    - run: echo hello satish > downloads/bravo.html
+    - run: echo hello satish > downloads/charlie.html
+   
+
+    - uses: actions/upload-artifact@v2
       with:
-        dotnet-version: 3.1.101
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
-      working-directory: ./AspNetMonsters.ApplicationInsights
-    - name: Test
-      run: dotnet test
-      working-directory: ./AspNetMonsters.ApplicationInsights
-      
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: dist-without-markdown
-        path: |
-          dist
-          !dist/**/*.md
+        name: my-artifact
+        path: downloads

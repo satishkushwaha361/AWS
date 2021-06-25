@@ -24,7 +24,7 @@ def main():
         Filename=local_path,
         Bucket=bucket_name,
         #Key=aws_key
-        Key='clientprovisioninglambda.zip'
+        Key='hello_lambda.zip'
     )
     print ('Done uploading')
 
