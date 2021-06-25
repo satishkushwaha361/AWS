@@ -1,6 +1,6 @@
 #!/bin/sh
 : ${AWS_REGION:=us-east-1}
-: ${DOTNET_LAMBDA_PACKAGE_NAME:=scripts/lambda_lambda.zip}
+: ${DOTNET_LAMBDA_PACKAGE_NAME:=scripts/hello_lambda.zip}
 export PATH="$PATH:/root/.dotnet/tools"
 # cd "${DOTNET_LAMBDA_WORKING_DIR:-.}"
 # dotnet lambda package $DOTNET_LAMBDA_PACKAGE_NAME
